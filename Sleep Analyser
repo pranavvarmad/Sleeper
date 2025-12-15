@@ -34,3 +34,41 @@ print("Worst sleep:", worst_sleep, "hours on", dates[worst_index])
 # Irregular days (< 6 hours)
 irregular = sum(1 for h in sleep_hours if h < 6)
 print("Irregular sleep days (<6 hours):", irregular)
+
+# 3. Sleep Recommendations (Average Sleep)
+
+print("\nSleep Recommendation (Based on Average Sleep):")
+
+if average_sleep < 6:
+    print(" Poor sleep pattern detected.")
+    print("- Try to sleep at least 7–8 hours daily")
+    print("- Avoid mobile usage before bedtime")
+    print("- Maintain a fixed sleep schedule")
+
+elif average_sleep < 7.5:
+    print(" Average sleep pattern.")
+    print("- Try to increase sleep by 30–60 minutes")
+    print("- Go to bed slightly earlier")
+
+else:
+    print(" Good sleep pattern detected!")
+    print("- Keep maintaining your current routine")
+    print("- Stay consistent with sleep timings")
+
+
+
+# 4. Sleep Consistency Check
+
+print("\nSleep Consistency Check:")
+
+if irregular == 0:
+    print(" No irregular sleep days. Very consistent sleep!")
+
+elif irregular <= 2:
+    print(" Few irregular sleep days.")
+    print("- Try to avoid late nights occasionally")
+
+else:
+    print(" Many irregular sleep days detected.")
+    print("- Try to maintain regular sleep timings")
+    print("- Reduce late-night activities")
