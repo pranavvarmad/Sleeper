@@ -1,4 +1,4 @@
-mport csv
+import csv
 import matplotlib.pyplot as plt
 
 
@@ -16,3 +16,21 @@ with open("sleep_data.csv", "r") as file:
 
         dates.append(row[0].strip())
         sleep_hours.append(float(row[3]))
+# 2. Basic Analysis
+
+total_days = len(sleep_hours)
+average_sleep = sum(sleep_hours) / total_days
+best_sleep = max(sleep_hours)
+worst_sleep = min(sleep_hours)
+
+best_index = sleep_hours.index(best_sleep)
+worst_index = sleep_hours.index(worst_sleep)
+
+print("Days analysed:", total_days)
+print("Average sleep:", round(average_sleep, 2), "hours")
+print("Best sleep:", best_sleep, "hours on", dates[best_index])
+print("Worst sleep:", worst_sleep, "hours on", dates[worst_index])
+
+# Irregular days (< 6 hours)
+irregular = sum(1 for h in sleep_hours if h < 6)
+print("Irregular sleep days (<6 hours):", irregular)
