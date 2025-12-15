@@ -106,3 +106,15 @@ elif sleep_score >= 60:
     print(" Decent sleep quality")
 else:
     print(" Poor sleep quality — needs improvement")
+
+
+# 7. Graph (Daily Sleep Duration)
+
+plt.figure(figsize=(10, 5))
+plt.plot(dates, sleep_hours, marker="o")
+plt.title("Daily Sleep Duration")
+plt.xlabel("Date")
+plt.ylabel("Hours Slept")
+plt.grid()
+plt.tight_layout()
+plt.show()
