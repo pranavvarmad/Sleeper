@@ -1,0 +1,18 @@
+mport csv
+import matplotlib.pyplot as plt
+
+
+# 1. Load CSV Data
+dates = []
+sleep_hours = []
+
+with open("sleep_data.csv", "r") as file:
+    reader = csv.reader(file)
+    next(reader)  
+
+    for row in reader:
+        if len(row) < 4:
+            continue   
+
+        dates.append(row[0].strip())
+        sleep_hours.append(float(row[3]))
