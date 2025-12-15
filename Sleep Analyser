@@ -72,3 +72,37 @@ else:
     print(" Many irregular sleep days detected.")
     print("- Try to maintain regular sleep timings")
     print("- Reduce late-night activities")
+
+# 5. Sleep Day Classification
+good = 0
+average = 0
+bad = 0
+
+for h in sleep_hours:
+    if h >= 7.5:
+        good += 1
+    elif h >= 6:
+        average += 1
+    else:
+        bad += 1
+
+print("\nSleep Day Classification:")
+print("Good sleep days:", good)
+print("Average sleep days:", average)
+print("Bad sleep days:", bad)
+
+
+# 6. Sleep Score (Out of 100)
+
+sleep_score = int((average_sleep / 8) * 100)
+if sleep_score > 100:
+    sleep_score = 100
+
+print("\nOverall Sleep Score:", sleep_score, "/ 100")
+
+if sleep_score >= 80:
+    print(" Excellent sleep quality")
+elif sleep_score >= 60:
+    print(" Decent sleep quality")
+else:
+    print(" Poor sleep quality — needs improvement")
