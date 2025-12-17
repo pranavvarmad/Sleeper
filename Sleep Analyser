@@ -108,13 +108,54 @@ else:
     print(" Poor sleep quality — needs improvement")
 
 
-# 7. Graph (Daily Sleep Duration)
+# 7. Graph (Daily Sleep Duration
 
-plt.figure(figsize=(10, 5))
-plt.plot(dates, sleep_hours, marker="o")
-plt.title("Daily Sleep Duration")
+plt.figure(figsize=(12, 6))
+
+   # Line plot
+plt.plot(dates, sleep_hours, marker="o", linewidth=2)
+
+   # shaded zones
+plt.axhspan(0, 6, facecolor="red", alpha=0.25, label="Bad Sleep (<6 hrs)")
+plt.axhspan(6, 7.5, facecolor="yellow", alpha=0.35, label="Average Sleep (6–7.5 hrs)")
+plt.axhspan(7.5, max(sleep_hours) + 1, facecolor="green", alpha=0.25, label="Good Sleep (≥7.5 hrs)")
+
+   # maxima and minima
+best_sleep = max(sleep_hours)
+worst_sleep = min(sleep_hours)
+
+best_day = dates[sleep_hours.index(best_sleep)]
+worst_day = dates[sleep_hours.index(worst_sleep)]
+
+plt.scatter(best_day, best_sleep, s=120)
+plt.scatter(worst_day, worst_sleep, s=120)
+
+plt.annotate(
+    f"Best: {best_sleep} hrs",
+    (best_day, best_sleep),
+    textcoords="offset points",
+    xytext=(0, 10),
+    ha="center"
+)
+
+plt.annotate(
+    f"Worst: {worst_sleep} hrs",
+    (worst_day, worst_sleep),
+    textcoords="offset points",
+    xytext=(0, -15),
+    ha="center"
+)
+
+
+plt.title("Daily Sleep Duration with Sleep Quality Zones")
 plt.xlabel("Date")
 plt.ylabel("Hours Slept")
-plt.grid()
+
+# Fix x-axis overlap (30 days, dd-mm-yyyy)
+plt.xticks(rotation=45)
+plt.locator_params(axis='x', nbins=10)
+
+plt.legend()
+plt.grid(True)
 plt.tight_layout()
 plt.show()
